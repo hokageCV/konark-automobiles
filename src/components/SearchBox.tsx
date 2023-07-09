@@ -32,19 +32,19 @@ export default function SearchBox() {
     }, [error]);
 
     return (
-        <div className="form-control bg-horizon-700 w-full max-w-xs items-center border border-4 border-horizon-900 p-2 rounded-lg">
+        <div className="form-control bg-searchBG w-full max-w-xs items-center p-2 rounded-lg">
             <label className="label">
-                <span className="label-text text-lg">Enter Product ID</span>
+                <span className="label-text text-lg text-searchText">Enter Product ID</span>
             </label>
             <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full max-w-xs bg-horizon-800 m-1"
+                className="input input-bordered text-center text-inputText w-full max-w-xs bg-inputBG m-1 placeholder-btnBG"
                 value={id}
                 onChange={(e) => setId(e.target.value)}
             />
             <button
-                className="btn max-w-max py-0.5 px-4 bg-horizon-900 border-2 border-sky-950"
+                className="btn max-w-max mt-2 py-0.5 px-4 bg-btnBG text-btnText  "
                 onClick={(e) => handleSubmit(e)}
             >
                 Search
