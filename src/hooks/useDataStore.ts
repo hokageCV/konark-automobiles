@@ -3,6 +3,9 @@ import { create } from "zustand";
 
 type DataStore = {
     Data: Product[];
+    setData: (data: Product[]) => void;
+    addData: (data: Product) => void;
+    clearData: () => void;
 };
 
 const useDataStore = create<DataStore>((set) => ({

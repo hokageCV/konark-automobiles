@@ -1,5 +1,6 @@
 "use client";
 
+import useDataStore from "@/hooks/useDataStore";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -7,6 +8,8 @@ export default function SearchBox() {
     const [id, setId] = useState("");
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const { setData } = useDataStore();
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
@@ -19,6 +22,9 @@ export default function SearchBox() {
 
         const response = await axios.get(`api/sheet?productId=${id}`);
         setId("");
+        console.log("🚀 ⚡ file: SearchBox.tsx:25 ⚡ handleSubmit ⚡ response:", response);
+
+        setData(response.data.data);
     };
 
     useEffect(() => {
