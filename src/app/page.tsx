@@ -14,7 +14,8 @@ export default function Home() {
             <main className="flex flex-col items-center justify-center p-6">
                 <SearchBox />
                 <div className="items-center mt-6 ">
-                    {Data?.length > 0 && Data.map((product) => <ProductCard product={product} />)}
+                    {Data?.length > 0 &&
+                        Data.map((product, index) => <ProductCard key={index} product={product} />)}
                 </div>
             </main>
         </div>
