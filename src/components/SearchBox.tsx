@@ -22,7 +22,6 @@ export default function SearchBox() {
 
         const response = await axios.get(`api/sheet?productId=${id}`);
         setId("");
-        console.log("🚀 ⚡ file: SearchBox.tsx:25 ⚡ handleSubmit ⚡ response:", response);
 
         setData(response.data.data);
     };
