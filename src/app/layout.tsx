@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Clip",
-    description: "search for clips",
+    title: "Konark Automobiles",
+    description: "search for clips in the clip database of konark automobiles",
     icons: {
         icon: "/sun.png",
     },
