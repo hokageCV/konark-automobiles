@@ -13,12 +13,12 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: "Product ID not provided", status: 400 });
         }
 
-        const response = await getSheetData();
-        if (!response) {
+        const sheetResponse = await getSheetData();
+        if (!sheetResponse) {
             return NextResponse.json({ error: "No data found", status: 404 });
         }
 
-        const data = response.slice(1); // first row is headers
+        const data = sheetResponse.slice(1); // first row is headers
 
         const filteredData: Product[] = data
             .filter((row) => row[0] === productId)
@@ -30,7 +30,10 @@ export async function GET(req: NextRequest) {
                 cars: row[3],
             }));
 
-        return NextResponse.json({ msg: "data found", data: filteredData });
+        const response = NextResponse.json({ msg: "data found", data: filteredData });
+        response.headers.set("Access-Control-Allow-Origin", "*");
+
+        return response;
     } catch (err: any) {
         return NextResponse.json({ error: err.message, status: 500 });
     }
