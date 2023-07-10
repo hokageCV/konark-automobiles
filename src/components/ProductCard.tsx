@@ -6,7 +6,7 @@ type Props = {
 
 export default function ProductCard({ product }: Props) {
     return (
-        <div className="card lg:card-side w-5/6 md:w-96 text-cardText bg-cardBG shadow-2xl p-1 m-2 ">
+        <div className="card card-side w-full md:w-96 text-cardText bg-cardBG shadow-2xl p-1 m-2 mt-6 ">
             <figure className="p-2">
                 <img
                     src={product.imgLink}
