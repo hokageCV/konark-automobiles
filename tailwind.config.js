@@ -28,6 +28,7 @@ module.exports = {
 
                 inputBG: "#97A9C3",
                 inputText: "#1a202c",
+                placeholderText: "#8485b3",
                 btnBG: "#6C7BA4",
                 btnText: "#1a202c",
 

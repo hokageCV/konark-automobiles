@@ -3,7 +3,7 @@ import { z } from "zod";
 const idSchema = z
     .string()
     .nonempty({ message: "Please Enter ID " })
-    .refine((value) => /^si \d{3,5}$/i.test(value), {
+    .refine((value) => /^\d{3,4}[a-zA-Z]?$/.test(value), {
         message: "Incorrect ID format ",
     });
 

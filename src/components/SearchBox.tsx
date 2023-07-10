@@ -20,12 +20,14 @@ export default function SearchBox() {
         if (validateErr) {
             setIsError(true);
             setErrorMessage(validateErr);
+            setId("");
             return;
         }
 
         try {
             setIsLoading(true);
-            const response = await axios.get(`api/sheet?productId=${id.toUpperCase()}`);
+            const productId = `SI ${id.toUpperCase()}`;
+            const response = await axios.get(`api/sheet?productId=${productId}`);
 
             setId("");
             setIsLoading(false);
@@ -59,12 +61,12 @@ export default function SearchBox() {
         <>
             <div className="form-control bg-searchBG w-full max-w-xs items-center p-2 rounded-lg">
                 <label className="label">
-                    <span className="label-text text-lg text-searchText">Enter Product ID</span>
+                    <span className="label-text text-lg text-searchText">Enter Clip Number</span>
                 </label>
                 <input
                     type="text"
-                    placeholder="Type here"
-                    className="input input-bordered text-center text-inputText w-full max-w-xs bg-inputBG m-1 placeholder-btnBG"
+                    placeholder="eg, 411"
+                    className="input input-bordered text-center text-inputText w-full max-w-xs bg-inputBG m-1 placeholder-placeholderText"
                     value={id}
                     onChange={(e) => setId(e.target.value)}
                 />
