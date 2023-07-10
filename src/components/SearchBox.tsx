@@ -20,10 +20,15 @@ export default function SearchBox() {
             return;
         }
 
-        const response = await axios.get(`api/sheet?productId=${id}`);
-        setId("");
-
-        setData(response.data.data);
+        try {
+            const response = await axios.get(`api/sheet?productId=${id}`);
+            setId("");
+            setData(response.data.data);
+        } catch (err: any) {
+            setError(true);
+            setErrorMessage(err.errorMessage);
+            console.log(err);
+        }
     };
 
     useEffect(() => {
