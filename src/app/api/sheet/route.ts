@@ -10,12 +10,16 @@ export async function GET(req: NextRequest) {
 
         const productId = searchParams.get("productId");
         if (!productId || productId.trim() === "") {
-            return NextResponse.json({ error: "Product ID not provided", status: 400 });
+            return NextResponse.json({
+                error: "Product ID not provided",
+                status: 400,
+                success: false,
+            });
         }
 
         const sheetResponse = await getSheetData();
         if (!sheetResponse) {
-            return NextResponse.json({ error: "No data found", status: 404 });
+            return NextResponse.json({ error: "No data found", status: 404, success: false });
         }
 
         const data = sheetResponse.slice(1); // first row is headers
@@ -30,11 +34,23 @@ export async function GET(req: NextRequest) {
                 cars: row[3],
             }));
 
-        const response = NextResponse.json({ msg: "data found", data: filteredData });
+        if (filteredData.length === 0) {
+            return NextResponse.json({
+                error: "Not found",
+                status: 404,
+                success: false,
+            });
+        }
+
+        const response = NextResponse.json({
+            msg: "data found",
+            data: filteredData,
+            success: true,
+        });
         response.headers.set("Access-Control-Allow-Origin", "*");
 
         return response;
     } catch (err: any) {
-        return NextResponse.json({ error: err.message, status: 500 });
+        return NextResponse.json({ error: err.message, status: 500, success: false });
     }
 }

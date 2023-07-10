@@ -1,5 +1,6 @@
 "use client";
 
+import { validateId } from "@/helpers/inputValidate";
 import useDataStore from "@/hooks/useDataStore";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -15,19 +16,27 @@ export default function SearchBox() {
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        if (id.trim() === "") {
+        const validateErr = validateId(id);
+        if (validateErr) {
             setIsError(true);
-            setErrorMessage("Error! Please Enter ID");
+            setErrorMessage(validateErr);
             return;
         }
 
         try {
             setIsLoading(true);
-            const response = await axios.get(`api/sheet?productId=${id}`);
+            const response = await axios.get(`api/sheet?productId=${id.toUpperCase()}`);
 
             setId("");
-            setData(response.data.data);
             setIsLoading(false);
+
+            if (response.data.error) {
+                setIsError(true);
+                setErrorMessage(response.data.error);
+                setData([]);
+            } else {
+                setData(response.data.data);
+            }
         } catch (err: any) {
             setIsLoading(false);
             setIsError(true);
