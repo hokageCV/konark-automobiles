@@ -2,6 +2,8 @@ import { Product } from "@/app/types";
 import getSheetData from "@/helpers/google";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic"; // fix for 'working in dev not in prod'
+
 export async function GET(req: NextRequest) {
     try {
         const { searchParams } = new URL(req.url);

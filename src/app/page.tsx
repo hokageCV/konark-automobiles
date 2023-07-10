@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic"; // fix for 'working in dev not in prod'
+
 import ProductCard from "@/components/ProductCard";
 import SearchBox from "@/components/SearchBox";
 import useDataStore from "@/hooks/useDataStore";
