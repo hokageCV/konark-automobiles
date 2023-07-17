@@ -26,7 +26,8 @@ export default function SearchBox() {
 
         try {
             setIsLoading(true);
-            const productId = `SI ${id.toUpperCase()}`;
+            // const productId = `SI ${id.toUpperCase()}`;
+            const productId = id.toUpperCase();
             const response = await axios.get(`api/sheet?productId=${productId}`);
 
             setId("");
