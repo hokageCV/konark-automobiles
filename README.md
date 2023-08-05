@@ -19,4 +19,4 @@ After entering the clip ID, click on the "Search" button. The application will c
 
 Happy browsing!
 
-[img]: https://res.cloudinary.com/dmtacem5p/image/upload/v1691219566/github/clip_manager_konark.png
+[img]: https://res.cloudinary.com/dmtacem5p/image/upload/v1691219867/github/clip_manager_konark.png
